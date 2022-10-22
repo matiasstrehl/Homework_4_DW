@@ -149,7 +149,7 @@ final_graph <- toplines_biden %>%
   coord_cartesian(ylim = c(.1,1), clip = "off") + ## do not need to modify
   scale_x_date(limits = c(as_date("2020-12-01"), as_date("2022-10-01"))) + ## do not need to modify
   labs(title = "Do Americans approve of Biden response to the coronavirus crisis?",
-       subtitle = "A calculation of the share of all Americans who approve of the handling of the coronavirus",
+       subtitle = "A calculation of the share of all Americans who approve of the handling of the coronavirus outbreak",
        x = "",
        y = "") + ## need to fill in
   theme_minimal() + ## do not need to modify
