@@ -130,7 +130,7 @@ toplines_biden <- toplines_biden %>%
 library(ggrepel)
 library(scales)
 
-toplines_biden %>%
+final_graph <- toplines_biden %>%
   mutate(label = ifelse(model_date ==  max(model_date),
                         party_description, NA_character_)) %>% ## do not need to modify 
   ggplot(aes(x = model_date, y = approve_estimate_frac, color = party)) + ## need to fill in
@@ -152,8 +152,6 @@ toplines_biden %>%
        y = "") + ## need to fill in
   theme_minimal() + ## do not need to modify
   theme(legend.position = "none") ## need to fill in
-
-
 
 
 
