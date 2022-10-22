@@ -6,6 +6,8 @@
 # Author: Matias Strehl
 # Perm number: 6811913
 
+rm(list=ls())
+
 # Load packages 
 library(tidyverse)
 library(janitor)
@@ -29,7 +31,6 @@ polls_adjusted <- read_csv("covid_approval_polls_adjusted.csv")
 # Part 2.a
 # Create average approval by subject
 polls_adjusted <- polls_adjusted %>%
-                    filter(subject != "=======") %>%
                     group_by(subject) %>%
                     mutate(average_approval = mean(approve_adjusted, na.rm = T)) %>%
                     ungroup()
@@ -49,6 +50,7 @@ approval_graph
 # Part 2.c
 # Separated by subject
 approval_graph_facet <- polls_adjusted %>%
+  filter(subject != "=======") %>%
   ggplot(aes(x = approve_adjusted, fill = subject )) +
   geom_histogram() +
   facet_wrap(vars(subject)) +
@@ -64,7 +66,7 @@ approval_graph_facet
 # Part 2.d
 # Add vertical lines at the mean
 mean_line <- approval_graph_facet +
-  geom_vline(data = polls_adjusted, aes(xintercept = average_approval), linetype = "dashed"   )
+  geom_vline(aes(xintercept = average_approval), linetype = "dashed"   )
 
 mean_line
 
@@ -89,7 +91,7 @@ polls_q3 <- polls_adjusted %>%
   filter(party == "D" | party == "R" | party == "I")
 
 # Part 3.b
-polls_q3 %>%
+scatter <- polls_q3 %>%
   ggplot(aes(x = end_date, y = approve_fraction, color = party)) +
   geom_point(alpha = 0.2) +
   theme_minimal() +
