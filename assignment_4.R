@@ -56,7 +56,7 @@ approval_graph_facet <- polls_adjusted %>%
   facet_wrap(vars(subject)) +
   xlab("Approval") +
   ylab("Count") +
-  labs(title = "American approval of Biden and Trump’s response to coronavirus",
+  labs(title = "American approval of Biden and Trump's response to coronavirus",
        subtitle = "From 2020-2022") + 
   labs(fill = "President") +
   theme_minimal()
