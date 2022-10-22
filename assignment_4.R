@@ -140,7 +140,7 @@ final_graph <- toplines_biden %>%
   geom_text_repel(aes(label = label),
                   nudge_x = 10, na.rm = T,
                   xlim = as_date(c("2022-07-01", "2022-10-01"))) + ## do not need to modify
-  geom_vline(aes(xintercept = lubridate::as_date("2021-01-20")), lty = "dashed") + ## need to fill in
+  geom_vline(aes(xintercept = as_date("2021-01-20")), linetype = "dashed") + ## need to fill in
   annotate("text", x = as_date("2021-01-20"), y = 0.05,
            label = "Biden sworn into office", size = 3,
            hjust = -0.1) + ## do not need to modify
